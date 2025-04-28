@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advisory Dashboard</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      height: 100vh;
+      background-color: #cce6f6;
+      padding-top: 20px;
+      position: fixed;
+      width: 200px;
+    }
+    .sidebar .nav-link {
+      color: #000;
+      font-weight: 500;
+    }
+    .sidebar .nav-link.active {
+      background-color: #f4f4f4;
+      border-radius: 5px;
+    }
+    .content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+    .table-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 100px;
+    }
+    .logo h5 {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="d-flex">
+    <div class="sidebar d-flex flex-column">
+      <div class="logo">
+        <img src="freelancinglogo.png" alt="VSN Logo"/>
+ 
+      </div>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="index.html">Summary</a>
+        <a class="nav-link" href="advistery.html">Advisory</a>
+        <a class="nav-link" href="finops.html">Finops</a>
+        <a class="nav-link" href="consumtion.html">Consumption</a>
+      
+      </nav>
+    </div>
+
+    <div class="content">
+      <h2>Advisory</h2>
+      <div class="container mt-5">
+        <h2 class="mb-4 text-center">Azure VM Advisory Report</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped align-middle">
+            <thead class="table">
+              <tr>
+                <th>ID</th>
+                <th>Metric Date</th>
+                <th>Virtual Machine</th>
+                <th>Current SKU</th>
+                <th>Target SKU</th>
+                <th>Savings Amount ($)</th>
+                <th>Annual Savings ($)</th>
+                <th>Max CPU (P95)</th>
+                <th>Max Memory (P95)</th>
+              </tr>
+            </thead>
+            <tbody id="advisoryTableBody">
+              <!-- Data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    
+      <script>
+        fetch("http://localhost:3000/api/advisory")
+          .then((res) => res.json())
+          .then((data) => {
+            const tableBody = document.getElementById("advisoryTableBody");
+    
+            data.forEach((item, index) => {
+              const row = document.createElement("tr");
+              if (index % 2 === 0) {
+                row.classList.add("table-primary");
+              }
+              row.innerHTML = `
+                <td>${item.ID}</td>
+                <td>${item.MetricDate}</td>
+                <td>${item.VirtualMachine}</td>
+                <td>${item.CurrentSku}</td>
+                <td>${item.TargetSku}</td>
+                <td>$${item.SavingsAmount}</td>
+                <td>$${item.AnnualSavingsAmount}</td>
+                <td>${item.MaxCpuP95}</td>
+                <td>${item.MaxMemoryP95}</td>
+              `;
+              tableBody.appendChild(row);
+            });
+          })
+          .catch((error) => {
+            console.error("Error fetching advisory data:", error);
+          });
+      </script>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VSN Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .sidebar {
+      background-color: #cce4f7;
+      height: 100vh;
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 10px 20px;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: #b3d8f3;
+      border-radius: 5px;
+    }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .dashboard-card {
+      transition: transform 0.2s;
+    }
+
+    .dashboard-card:hover {
+      transform: scale(1.03);
+    }
+
+    .vsn-logo {
+      width: 80px;
+      margin: 0 auto 20px auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-2 sidebar d-flex flex-column align-items-start">
+        <img src="freelancinglogo.png" alt="VSN Logo" class="vsn-logo">
+        <a href="index.html">Summary</a>
+        <a href="advistery.html">Advisory</a>
+        <a href="finops.html">Finops</a>
+        <a href="consumtion.html">Consumption</a>
+    
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-md-10 py-4 px-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>Summary</h2>
+          <select class="form-select w-auto">
+            <option selected>KUM</option>
+            <option value="1">ORG1</option>
+            <option value="2">ORG2</option>
+          </select>
+        </div>
+
+        <div class="row g-4">
+          <!-- Finops Card -->
+          <div class="col-md-4">
+            <div class="card dashboard-card">
+              <img src="summary1.jpeg" class="card-img-top" alt="Finops">
+              <div class="card-body text-center">
+                <h5 class="card-title">Finops</h5>
+                <p class="card-text">Finops</p>
+                <a href="#" class="btn btn-outline-primary">OPEN</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Consumption Card -->
+          <div class="col-md-4">
+            <div class="card dashboard-card">
+              <img src="summary2.jpeg" class="card-img-top" alt="Consumption">
+              <div class="card-body text-center">
+                <h5 class="card-title">Consumption</h5>
+                <p class="card-text">Consumption</p>
+                <a href="#" class="btn btn-outline-primary">OPEN</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Advisory Card -->
+          <div class="col-md-4">
+            <div class="card dashboard-card">
+              <img src="summary3.jpeg" class="card-img-top" alt="Advisory">
+              <div class="card-body text-center">
+                <h5 class="card-title">Advisory</h5>
+                <p class="card-text">Advisory</p>
+                <a href="#" class="btn btn-outline-primary">OPEN</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
